@@ -26,13 +26,12 @@ public class OrbitCamera : MonoBehaviour
     private void LateUpdate()
     {
         if (target is null) return;
-
-        // Only orbit while the right mouse button is held
         
         Vector2 delta = look.action.ReadValue<Vector2>();
+        
         _yaw += delta.x * sensitivity;
         _pitch = Mathf.Clamp(_pitch - delta.y * sensitivity, minPitch, maxPitch);
-        // Yaw is an offset from the ship's heading, so the camera turns with the ship
+        // Offset from the ship's heading, so the camera turns with the ship
         float baseYaw = followShipHeading ? target.eulerAngles.y : 0f;
         Quaternion rotation = Quaternion.Euler(_pitch, baseYaw + _yaw, 0f);
         Vector3 focus = target.position + targetOffset;

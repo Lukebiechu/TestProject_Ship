@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="HUD" style="flex-grow: 1; flex-direction: column; align-items: auto; align-self: flex-start;">
+        <ui:Label text="Sail open: 100%" name="SailOpenLabel" style="position: relative; top: auto; left: auto; height: 30px; width: 119px;"/>
+        <ui:Label text="Sail angle: 0° " name="SailAngleLabel" style="position: relative; top: auto; left: auto; height: 40px; width: 118px;"/>
+    </ui:VisualElement>
+</ui:UXML>
