@@ -7,10 +7,30 @@
             "id": "7e85ee55-83cc-415d-bff5-71515fbdb14c",
             "actions": [
                 {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "cd2674a1-a17a-4843-8c44-e34ae8c06403",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
                     "name": "Move",
                     "type": "Value",
                     "id": "24ffc149-2fd4-4421-b737-2852a988e824",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "SailsTurn",
+                    "type": "Value",
+                    "id": "aa3e56e5-0d7d-49db-9aa3-98b63c1811f8",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true,
@@ -70,6 +90,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "035d45b5-34cd-4cb6-9d7d-541499435d30",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "68567d2f-0ca4-417d-9445-afc7de72aa80",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SailsTurn",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "8fb89ca0-ae5b-489a-a276-ad445188d1f9",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SailsTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a3c96a70-ea1d-4e64-afd3-68d46557c0b7",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SailsTurn",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
