@@ -15,9 +15,4 @@ public class WindSystem : MonoBehaviour
             return d.normalized * speed;
         }
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(transform.position, Velocity);
-    }
 }
