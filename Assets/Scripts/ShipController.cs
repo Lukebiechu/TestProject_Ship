@@ -20,6 +20,11 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float forwardDrag;   // along the hull 
     [SerializeField] private float lateralDrag;   // sideways
     
+    [Header("Wind")]
+    [SerializeField] private WindSystem wind;
+    [SerializeField] private float sideWindCoef;
+    [SerializeField] private float frontWindCoef;
+    
 
     private Rigidbody _rb;
     private Vector2 _input;
@@ -36,6 +41,8 @@ public class ShipController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Vector3 windVelocity = wind?.Velocity ?? Vector3.zero;
+        Vector3 relWind = transform.InverseTransformDirection(windVelocity - _rb.linearVelocity);
         // Velocity in the ship's own axes: x = sideways, z = forward
         var v = transform.InverseTransformDirection(_rb.linearVelocity);
 
@@ -44,9 +51,14 @@ public class ShipController : MonoBehaviour
             -v.x * Mathf.Abs(v.x) * lateralDrag,
             0f,
             -v.z * Mathf.Abs(v.z) * forwardDrag);
+        
+        var windLocal = new Vector3(
+            relWind.x * Mathf.Abs(relWind.x) * sideWindCoef,
+            0f,
+            relWind.z * Mathf.Abs(relWind.z) * frontWindCoef);
 
         _rb.AddForce(transform.TransformDirection(dragLocal), ForceMode.Acceleration);
-
+        _rb.AddForce(transform.TransformDirection(windLocal), ForceMode.Acceleration);
         _rb.AddForce(transform.forward * (_input.y * thrust), ForceMode.Acceleration);
         
         float rudderAuthority = Mathf.Clamp(v.z / refSpeed, -1f, 1f);
